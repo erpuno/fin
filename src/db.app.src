@@ -1,6 +1,6 @@
 {application, db,
  [
-  {description, "PrivatBank Persistent Storage"},
+  {description, "Bank Operations Storage"},
   {vsn, "1"},
   {registered, []},
   {applications, [kernel,stdlib,kvs]},

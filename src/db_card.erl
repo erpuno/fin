@@ -1,11 +1,11 @@
--module(db_accounts).
+-module(db_card).
 -include_lib("kvs/include/metainfo.hrl").
 -include_lib("db/include/transaction.hrl").
 -compile(export_all).
 
 metainfo() ->
-    #schema{name = kvs, tables = 
+    #schema{name = db, tables = 
                 [
-                 #table{name = transaction, fields=record_info(fields, transaction)}
+                 #table{name = card, fields=record_info(fields, card)}
                 ]
            }.
