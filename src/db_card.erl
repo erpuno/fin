@@ -1,6 +1,6 @@
 -module(db_card).
 -include_lib("kvs/include/metainfo.hrl").
--include_lib("db/include/transaction.hrl").
+-include_lib("db/include/card.hrl").
 -compile(export_all).
 
 metainfo() ->

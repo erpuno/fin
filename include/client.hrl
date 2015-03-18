@@ -2,6 +2,7 @@
 -ifndef(CLIENT_HRL).
 -define(CLIENT_HRL, "client_hrl").
 
+-include_lib("db/include/creation.hrl").
 -include_lib("kvs/include/kvs.hrl").
 
 -record(client, {?ITERATOR(feed), ?CREATION,
