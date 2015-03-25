@@ -1,13 +1,19 @@
-
 -ifndef(ACCOUNT_HRL).
 -define(ACCOUNT_HRL, "account_hrl").
-
--include_lib("db/include/creation.hrl").
 -include_lib("kvs/include/kvs.hrl").
 
 -record(account, {?ITERATOR(feed),
-        program,
-        client,
-        state}).
+        origin,
+        type,
+        iban,
+        program = undefined,
+        customer,
+        name,
+        amount=0,
+        transactions,
+        state = open,
+        startDate={2015,1,1},
+        terminationDate={2015,1,1}
+       }).
 
 -endif.
