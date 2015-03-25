@@ -1,0 +1,9 @@
+-module(db).
+-description('DB Bank Accounting').
+-copyright('Synrc Research Center s.r.o.').
+-include("account.hrl").
+-include("card.hrl").
+-include("transaction.hrl").
+-include("client.hrl").
+-include("currency.hrl").
+-compile(export_all).
