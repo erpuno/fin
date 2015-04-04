@@ -1,6 +1,6 @@
 {application, db,
  [
-  {description, "Bank Operations Storage"},
+  {description, "Bank Database"},
   {vsn, "1"},
   {registered, []},
   {applications, [kernel,stdlib,kvs]},
