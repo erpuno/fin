@@ -1,8 +1,7 @@
 -ifndef(TRANSACTION_HRL).
 -define(TRANSACTION_HRL, "transaction_hrl").
--include_lib("kvs/include/kvs.hrl").
 
--record(transaction, {?ITERATOR(feed),
+-record(transaction, {id,next,prev,
         timestamp,
         beneficiary,
         subsidiary,

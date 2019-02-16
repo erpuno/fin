@@ -1,8 +1,7 @@
 -ifndef(ACCOUNT_HRL).
 -define(ACCOUNT_HRL, "account_hrl").
--include_lib("kvs/include/kvs.hrl").
 
--record(account, {?ITERATOR(feed),
+-record(account, {id,next,prev,
         origin,
         type,
         iban,

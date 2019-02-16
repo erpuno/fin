@@ -2,7 +2,7 @@
 -define(CARD_HRL, "card_hrl").
 -include_lib("kvs/include/kvs.hrl").
 
--record(card, {?ITERATOR(feed),
+-record(card, {id,next,prev,
         balance,
         balanceTarget,
         bank,

@@ -1,8 +1,7 @@
 -ifndef(TRANSACTION_HRL).
 -define(TRANSACTION_HRL, "currency_hrl").
--include_lib("kvs/include/kvs.hrl").
 
--record(currency, {?ITERATOR(feed),
+-record(currency, {id,next,prev,
         code,
         rate,
         date,

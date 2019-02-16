@@ -2,7 +2,7 @@
 -define(CLIENT_HRL, "client_hrl").
 -include_lib("kvs/include/kvs.hrl").
 
--record(client, {?ITERATOR(feed),
+-record(client, {id,next,prev,
         bank,
         iban,
         local,
