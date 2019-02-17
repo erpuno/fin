@@ -1,0 +1,9 @@
+{application, bank,
+ [
+  {description, "BANK Financial Management"},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [kernel,stdlib,kvs]},
+  {mod, { bank, []}},
+  {env, []}
+ ]}.
