@@ -1,5 +1,5 @@
 -module(bank).
--include_lib("kvs/include/metainfo.hrl").
+-include_lib("kvx/include/metainfo.hrl").
 -include("client.hrl").
 -include("account.hrl").
 -include("card.hrl").

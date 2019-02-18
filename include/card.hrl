@@ -1,6 +1,6 @@
 -ifndef(CARD_HRL).
 -define(CARD_HRL, "card_hrl").
--include_lib("kvs/include/kvs.hrl").
+-include_lib("kvx/include/kvx.hrl").
 
 -record(card, {id,next,prev,
         balance,
