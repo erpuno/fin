@@ -1,5 +1,5 @@
-Database Business
-=================
+BANK: Open Source Bank
+======================
 
 #client
 #account
@@ -8,4 +8,9 @@ Database Business
 #currency
 #program
 
+Credits
+-------
+
+* Maxim Sokhatsky
+* Vladimir Kirillov
 
