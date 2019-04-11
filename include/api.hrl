@@ -9,4 +9,10 @@
 -record(create_node,    {?API(create), scope_id=[], obj_type=[], obj_id=[], title=[],
                                        description=[], version=[] }).
 
+-record(charge, {}).
+-record(withdraw, {}).
+-record(open, {}).
+-record(close,{}).
+-record(transfer, {}).
+
 -endif.

@@ -3,7 +3,7 @@
   {description, "BANK Financial Management"},
   {vsn, "1"},
   {registered, []},
-  {applications, [kernel,stdlib,kvx]},
+  {applications, [kernel,stdlib,n2o,bpe,kvx]},
   {mod, { bank, []}},
   {env, []}
  ]}.
