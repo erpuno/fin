@@ -6,10 +6,14 @@
 -include_lib("kvs/include/metainfo.hrl").
 -export([start/2, stop/1, init/1]).
 
-stop(_State) -> ok.
+stop(_) -> ok.
 init([]) -> {ok, { {one_for_one, 5, 10}, []} }.
-start(_StartType, _StartArgs) ->
-    cowboy:start_clear(http, [{port, port()}], #{ env => #{dispatch => points()} }),
+start(_,_) ->
+    cowboy:start_tls(http, [{port, port()},
+        {certfile, code:priv_dir(bpe)++"/ssl/fullchain.pem"},
+        {keyfile, code:priv_dir(bpe)++"/ssl/privkey.pem"},
+        {cacertfile, code:priv_dir(bpe)++"/ssl/fullchain.pem"}],
+        #{env => #{dispatch => points()} }),
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 port() -> application:get_env(n2o,port,8041).
