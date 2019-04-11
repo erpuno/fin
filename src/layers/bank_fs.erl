@@ -36,12 +36,12 @@ line() -> case ent:ls() of [] -> [];
                             L  -> RL = L,
                                   {LT,LN} = lists:last(RL),
                                   [ {Type,Name,1} || {Type,Name} <- lists:droplast(RL) ] ++ [{LT,LN,0}] end.
-draw(Prefix,{T,N,L}) -> io:format(io_lib:format("~s+-- ~s ~n",[Prefix,"/"++wf:to_list(N)])).
-draw2(Prefix,{T,N,L},Count) -> io:format(io_lib:format("~s+-- ~s (~s)~n",[Prefix,"/"++wf:to_list(N),wf:to_list(Count)])).
+draw(Prefix,{_T,N,_L}) -> io:format(io_lib:format("~s+-- ~s ~n",[Prefix,"/"++wf:to_list(N)])).
+draw2(Prefix,{_T,N,_L},Count) -> io:format(io_lib:format("~s+-- ~s (~s)~n",[Prefix,"/"++wf:to_list(N),wf:to_list(Count)])).
 dump() -> io:format("==[fs]==~n"), end_fs:dump("","/",0).
 dump(Prefix,Cd,X) -> ent:cd(fsn(Cd)),
                    [ begin PX = lists:concat([Prefix,case X of 0 -> "    "; _ -> "|   " end]),
-                           PL = lists:concat([Prefix,case L of 0 -> "    "; _ -> "|   " end]),
+                           _PL = lists:concat([Prefix,case L of 0 -> "    "; _ -> "|   " end]),
                            Deep = fsn(filename:join(Cd,wf:to_list(N))),
                            case retrieve(T,N,Deep) of
                                 {ok,#folder{count=Count}} when Count > 100 -> draw2(PX,{T,N,L},Count);
@@ -52,8 +52,8 @@ dump(Prefix,Cd,X) -> ent:cd(fsn(Cd)),
                            ok
                             end || {T,N,L} <- line() ], ok.
 
-retrieve(user,Id,Deep) -> kvs:get(user,Id);
-retrieve(folder,Id,Deep) -> kvs:get(folder,Deep).
+retrieve(user,Id,_Deep) -> kvs:get(user,Id);
+retrieve(folder,_Id,Deep) -> kvs:get(folder,Deep).
 
 unfold_folders(Comp) -> lists:foldl(fun (X,A) -> J = lists:concat([A,X,"/"]),
                                               ent:send_message(#create_folder{folder_id=J}),

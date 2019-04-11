@@ -7,7 +7,7 @@
 -include("fs/fs.hrl").
 -compile(export_all).
 
-exec(#create_company{ver=Ver,name=Name,description=Desc}) ->
+exec(#create_company{ver=Ver,name=Name}) ->
     Home  = filename:join(["home",Name]),
     Users = filename:join(["home",Name,"users"]),
     Scope = filename:join(["home",Name,"scopes"]),
@@ -16,7 +16,7 @@ exec(#create_company{ver=Ver,name=Name,description=Desc}) ->
          {error,not_found} -> [ exec(#create_folder{ver=Ver,folder_id=ent:fsn(X)}) || X <- [Home,Users,Scope] ],
                               {ok,Home} end;
 
-exec(#create_user{ver=Ver,logins=Logins}) ->
+exec(#create_user{logins=Logins}) ->
     {ok,[ case kvs:get(user,X) of
                {ok,_} -> {error,[exists,X]};
                {error,not_found} -> User = kvs:next_id("user",1),
@@ -24,7 +24,7 @@ exec(#create_user{ver=Ver,logins=Logins}) ->
                                     kvs:add(#i{id=kvs:next_id("scope",1),feed_id="users",type=user,ref=User})
          end || X <- Logins]};
 
-exec(#create_folder{ver=Ver,folder_id=Path,description=Description}) ->
+exec(#create_folder{folder_id=Path,description=Description}) ->
     Comp = string:tokens(Path,"/"),
     Folder = lists:droplast(Comp),
     Parent = case string:join(Folder,"/") of [] -> "/"; E -> E end,
@@ -34,7 +34,7 @@ exec(#create_folder{ver=Ver,folder_id=Path,description=Description}) ->
                               kvs:add(#i{id=kvs:next_id("scope",1),type=folder,ref=lists:last(Comp),feed_id=Parent}) end;
 
 
-exec(#create_node{ver=Vsn,title=Title,description=Desc,scope_id=ScopeId}) ->
+exec(#create_node{title=Title,description=Desc,scope_id=ScopeId}) ->
     NodeId = kvs:next_id("node",1),
     Node = #node{id = NodeId, name=Title,description=Desc,feed_id=ScopeId},
     Res = kvs:add(Node),
