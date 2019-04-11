@@ -10,9 +10,9 @@ stop(_) -> ok.
 init([]) -> {ok, { {one_for_one, 5, 10}, []} }.
 start(_,_) ->
     cowboy:start_tls(http, [{port, port()},
-        {certfile, code:priv_dir(bpe)++"/ssl/fullchain.pem"},
-        {keyfile, code:priv_dir(bpe)++"/ssl/privkey.pem"},
-        {cacertfile, code:priv_dir(bpe)++"/ssl/fullchain.pem"}],
+        {certfile, code:priv_dir(bank)++"/ssl/fullchain.pem"},
+        {keyfile, code:priv_dir(bank)++"/ssl/privkey.pem"},
+        {cacertfile, code:priv_dir(bank)++"/ssl/fullchain.pem"}],
         #{env => #{dispatch => points()} }),
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
