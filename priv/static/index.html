@@ -1,0 +1,79 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Maxim Sokhatsky" />
+    <title>BPE</title>
+    <link rel="stylesheet" href="css/synrc.css?v=2" />
+</head>
+<body>
+    <nav>
+        <a href='https://n2o.space'>ECO</a>
+        <a href='https://o7.network'>O7</a>
+        <a href='https://bpe.n2o.space' style="background:#ededed;">BANK</a>
+        <a href='login.htm'>ADMIN</a>
+    </nav>
+    <header>
+        <h1>BANK</h1>
+    </header>
+    <aside>
+        <article>
+            <section>
+                <h3>SYNOPSIS</h3>
+                <div>BANK is an open source bank.</div><br>
+                <div></div>
+                <figure><code>
+ 1> bpe:amend(Process#process.id,#deposit{}).
+                </code></figure>
+                <div>Thanks to this isomorphic correspondance between Erlang processes
+                    and processes in process-calculus,
+                    code size of core BPE server was reduced to 400 LOC. This is definitely
+                    most clean functional implementation of workflow engine avalible
+                    for electronical banking systems.</div>
+            </section>
+            <section>
+            <h3>MODULES</h3>
+            <div><ul>
+                <li><a href="man/bpe.htm">BPE</a></font></li>
+                <li><a href="man/task.htm">TASK</a></font></li>
+                <li><a href="man/event.htm">EVENT</a></font></li>
+            </ul></div>
+            <br>
+            <div>
+                Nov 2018 &copy; <a href="https://github.com/synrc/bpe">Namdak Tonpa</a> ISC
+            </div>
+            </section>
+        </article>
+    </aside>
+    <main>
+        <section>
+            <a name=intro><h3>INTRO</h3></a>
+            <p>BPE is a business process managament application that brings Erlang for enterprises.
+            It provides infrastructure for workflow definitions, process orchestration,
+            rule based production systems and distributed storage.</p>
+            <figure><code>
+ $ mad get bank
+ $ cd deps/bank
+ $ mad dep com pla rep
+            </code></figure>
+    </section>
+    <section>
+        <a name=intro><h3>PROTOCOL</h3></a>
+            <figure><code>
+ -record(open,       { id=[] :: [] | integer() }).
+ -record(close,      { id=[] :: [] | integer() }).
+ -record(charge,     { id=[] :: [] | integer() }).
+ -record(withdraw,   { id=[] :: [] | integer() }).
+ -record(transfer,   { id=[] :: [] | integer() }).
+            </code></figure>
+    </section>
+</main>
+
+<footer>
+    Made with <span class="heart">❤</span> to N2O
+</footer>
+
+</body>
+</html>

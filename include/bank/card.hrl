@@ -1,6 +1,7 @@
 -ifndef(CARD_HRL).
 -define(CARD_HRL, "card_hrl").
--include_lib("kvx/include/kvx.hrl").
+
+% could be used both for bank and client connector software
 
 -record(card, {id,next,prev,
         balance,

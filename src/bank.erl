@@ -1,22 +1,34 @@
 -module(bank).
--include_lib("kvx/include/metainfo.hrl").
--include("client.hrl").
--include("account.hrl").
--include("card.hrl").
--include("transaction.hrl").
--include("program.hrl").
 -compile(export_all).
--export([start/2, stop/1, init/1, metainfo/0]).
+-behaviour(application).
+-behaviour(supervisor).
+-include("ent.hrl").
+-include_lib("kvs/include/metainfo.hrl").
+-export([start/2, stop/1, init/1]).
 
-start(_StartType, _StartArgs) -> supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 stop(_State) -> ok.
 init([]) -> {ok, { {one_for_one, 5, 10}, []} }.
+start(_StartType, _StartArgs) ->
+    cowboy:start_clear(http, [{port, port()}], #{ env => #{dispatch => points()} }),
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-metainfo() ->
-    #schema{name=bank, tables=[
-        #table{name = account,     fields=record_info(fields, account)},
-        #table{name = client,      fields=record_info(fields, client)},
-        #table{name = card,        fields=record_info(fields, card)},
-        #table{name = program,     fields=record_info(fields, program)},
-        #table{name = transaction, fields=record_info(fields, transaction)}
-    ]}.
+port() -> application:get_env(n2o,port,8041).
+points() ->
+    cowboy_router:compile([{'_', [
+    {"/ws/[...]", n2o_cowboy2, []},
+    {"/app/[...]", cowboy_static, {dir, code:priv_dir(bank)++"/static", []}} ]}]).
+
+metainfo() -> #schema { name = kvs, tables = tables() }.
+tables() -> [ #table{name=folder, container=true, fields=record_info(fields,folder)},
+              #table{name=scope,  container=true, fields=record_info(fields,scope)},
+              #table{name=i,                      fields=record_info(fields,i)},
+              #table{name=acl,                    fields=record_info(fields,acl)},
+              #table{name=node,                   fields=record_info(fields,node)}
+            ].
+
+send_message(Message) -> (element(2,Message)):exec(Message).
+
+fsn(Path) -> bank_fs:fsn(Path).
+cd(Path)  -> bank_fs:cd(bank_fs:fsn(Path)).
+pwd()     -> bank_fs:pwd().
+ls()      -> bank_fs:ls().

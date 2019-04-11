@@ -1,6 +1,5 @@
 -ifndef(CLIENT_HRL).
 -define(CLIENT_HRL, "client_hrl").
--include_lib("kvx/include/kvx.hrl").
 
 -record(client, {id,next,prev,
         bank,
