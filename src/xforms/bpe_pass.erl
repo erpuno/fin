@@ -1,4 +1,4 @@
--module(bpe_otp).
+-module(bpe_pass).
 -copyright('Maxim Sokhatsky').
 -include_lib("forms/include/meta.hrl").
 -compile(export_all).

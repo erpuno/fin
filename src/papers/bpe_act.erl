@@ -2,15 +2,15 @@
 -copyright('Maxim Sokhatsky').
 -include_lib("nitro/include/nitro.hrl").
 -include_lib("forms/include/meta.hrl").
--include("bpe.hrl").
+-include_lib("bpe/include/bpe.hrl").
 -compile(export_all).
 -record(pi, {code='Spawnproc'}).
 
 event(init) ->
    nitro:clear(tableHead),
    Bin = nitro:qc(p),
-   Id = try binary_to_integer(Bin) catch _:_ -> 0 end,
-   case kvs:get(process,Id) of
+   Id = try binary_to_list(Bin) catch _:_ -> 0 end,
+   case kvx:get(process,Id) of
         {error,not_found} ->
            nitro:update(n, "ERR"),
            nitro:update(desc, "No process found."),

@@ -25,7 +25,7 @@ event(init) ->
     nitro:insert_bottom(ctrl, #link{id=creator, body="New",postback=create, class=[button,sgreen]}),
     nitro:hide(frms),
   [ nitro:insert_bottom(tableHead, bpe_row:new(forms:atom([row,I#process.id]),I))
- || I <- kvs:entries(kvs:get(feed,process),process,-1) ],
+ || I <- kvx:all(process) ],
     ok;
 
 event({complete,Id}) ->

@@ -1,6 +1,6 @@
 -module(bpe_n2o).
--include("bpe.hrl").
--include("doc.hrl").
+-include_lib("bpe/include/bpe.hrl").
+-include_lib("bpe/include/doc.hrl").
 -record('Token', {data= [] :: binary()}).
 -record(io, {code= [] :: term(),data = [] :: [] | #'Token'{} | #process{} | #io{} | term() }).
 

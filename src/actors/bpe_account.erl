@@ -1,7 +1,7 @@
 -module(bpe_account).
 -author('Maxim Sokhatsky').
--include("bpe.hrl").
--include("doc.hrl").
+-include_lib("bpe/include/bpe.hrl").
+-include_lib("bpe/include/doc.hrl").
 -export([def/0]).
 -compile(export_all).
 

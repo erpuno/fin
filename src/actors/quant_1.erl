@@ -1,7 +1,7 @@
 -module(quant_1).
 -author('Maxim Sokhatsky').
--include("bpe.hrl").
--include("doc.hrl").
+-include_lib("bpe/include/bpe.hrl").
+-include_lib("bpe/include/doc.hrl").
 -compile(export_all).
 
 def() ->

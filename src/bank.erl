@@ -3,22 +3,14 @@
 -behaviour(application).
 -behaviour(supervisor).
 -export([start/2, stop/1, init/1]).
-stop(_) -> ok.
-init([]) -> {ok, { {one_for_one, 5, 10}, []} }.
-start(_,_) ->
-    cowboy:start_tls(http, [{port, port()},
-        {certfile,   code:priv_dir(bank)++"/ssl/fullchain.pem"},
-        {keyfile,    code:priv_dir(bank)++"/ssl/privkey.pem"},
-        {cacertfile, code:priv_dir(bank)++"/ssl/fullchain.pem"}],
-        #{env => #{dispatch => points()} }),
-    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
-port() -> application:get_env(n2o,port,8041).
-points() ->
-    cowboy_router:compile([{'_', [
-    {"/ws/[...]", n2o_cowboy2, []},
-    {"/app/[...]", cowboy_static, {dir, code:priv_dir(bank)++"/static", []}} ]}]).
+stop(_)    -> ok.
+init([])   -> {ok, { {one_for_one, 5, 10}, []} }.
+start(_,_) -> kvs:join(), kvx:join(),
+              cowboy:start_tls(http, n2o_cowboy:env(?MODULE),
+              #{env => #{dispatch => n2o_cowboy2:points()} }),
+              supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 send_message(Message) -> (element(2,Message)):exec(Message).
-fsn(Path) -> bank_fs:fsn(Path).
-cd(Path)  -> bank_fs:cd(bank_fs:fsn(Path)).
-pwd()     -> bank_fs:pwd().
-ls()      -> bank_fs:ls().
+fsn(Path)  -> bank_fs:fsn(Path).
+cd(Path)   -> bank_fs:cd(bank_fs:fsn(Path)).
+pwd()      -> bank_fs:pwd().
+ls()       -> bank_fs:ls().

@@ -1,9 +1,9 @@
 {application, bank,
  [
-  {description, "BANK Financial Management"},
-  {vsn, "1"},
+  {description, "BANK Account Management"},
+  {vsn, "0.6.0"},
   {registered, []},
-  {applications, [kernel,stdlib,n2o,bpe,kvx]},
+  {applications, [kernel,stdlib,bpe]},
   {mod, { bank, []}},
   {env, []}
  ]}.
