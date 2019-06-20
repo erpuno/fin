@@ -1,6 +1,11 @@
 BANK: Open Source Bank
 ======================
 
+Prerequisites
+-------------
+
+* cmake (rocksdb)
+
 Schema
 ------
 
