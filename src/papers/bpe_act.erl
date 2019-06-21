@@ -8,6 +8,7 @@
 
 event(init) ->
    nitro:clear(tableHead),
+   nitro:clear(tableRow),
    Bin = nitro:qc(p),
    Id = try binary_to_list(Bin) catch _:_ -> 0 end,
    case kvx:get(process,Id) of
@@ -20,7 +21,7 @@ event(init) ->
            nitro:update(n, Bin),
            nitro:update(num, Bin),
    History = bpe:hist(Id),
- [ nitro:insert_bottom(tableHead,
+ [ nitro:insert_bottom(tableRow,
    bpe_trace:new(forms:atom([trace,nitro:to_list(I#hist.id)]),I))
    || I <- History ]
    end;

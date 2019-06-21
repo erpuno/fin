@@ -17,6 +17,7 @@ header() ->
 
 event(init) ->
     nitro:clear(tableHead),
+    nitro:clear(tableRow),
     nitro:insert_top(tableHead, header()),
     nitro:clear(frms),
     nitro:clear(ctrl),
@@ -24,7 +25,7 @@ event(init) ->
     nitro:insert_bottom(frms, forms:new(Module:new(Module,Module:id()), Module:id())),
     nitro:insert_bottom(ctrl, #link{id=creator, body="New",postback=create, class=[button,sgreen]}),
     nitro:hide(frms),
-  [ nitro:insert_bottom(tableHead, bpe_row:new(forms:atom([row,I#process.id]),I))
+  [ nitro:insert_top(tableRow, bpe_row:new(forms:atom([row,I#process.id]),I))
  || I <- kvx:all(process) ],
     ok;
 
@@ -39,7 +40,7 @@ event(create) ->
     nitro:show(frms);
 
 event({'Spawn',_}) ->
-    Atom = nitro:to_atom(nitro:q(process_type_pi_bpe_act)),
+    Atom = nitro:to_atom(nitro:q("process_type_pi_bpe_act")),
     Id = case bpe:start(Atom:def(), []) of
               {error,I} -> I;
               {ok,I} -> I end,
