@@ -56,6 +56,6 @@ new(Name,{pi,_Code}) ->
                         tooltips = [],
                         options = [ #opt{name=quant_1,title = "Client Acquire [QUANTERALL]"},
                                     #opt{name=quant_2,title = "Client Tracking [QUANTERALL]"},
-                                    #opt{name=bpe_account,checked=true,title = "Client Account [SYNRC BANK]"},
+                                    #opt{name=bpe_account,checked=true,title = "Client Account [SYNRC FIN]"},
                                     #opt{name=tour,title = "Tournaments [ESM.ONE]"}
                        ]}]}.

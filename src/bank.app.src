@@ -1,6 +1,6 @@
 {application, bank,
  [
-  {description, "BANK Account Management"},
+  {description, "FIN Account Management"},
   {vsn, "0.6.0"},
   {registered, []},
   {applications, [kernel,stdlib,bpe]},

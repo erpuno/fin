@@ -1,5 +1,5 @@
-BANK: Open Source Bank
-======================
+FIN: Financial Management
+=========================
 
 Prerequisites
 -------------
