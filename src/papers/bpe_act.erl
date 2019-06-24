@@ -1,7 +1,7 @@
 -module(bpe_act).
 -copyright('Maxim Sokhatsky').
 -include_lib("nitro/include/nitro.hrl").
--include_lib("forms/include/meta.hrl").
+-include_lib("form/include/meta.hrl").
 -include_lib("bpe/include/bpe.hrl").
 -compile(export_all).
 -record(pi, {code='Spawnproc'}).

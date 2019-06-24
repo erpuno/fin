@@ -6,10 +6,6 @@
 -include("bank/card.hrl").
 -include("bank/transaction.hrl").
 -include("api.hrl").
--include("fs/acl.hrl").
--include("fs/scope.hrl").
--include("fs/node.hrl").
--include("fs/fs.hrl").
 
 -endif.
 

@@ -9,7 +9,7 @@
 -include_lib("bank/include/bank/client.hrl").
 -include_lib("bank/include/bank/account.hrl").
 -include_lib("bank/include/bank/card.hrl").
--include_lib("forms/include/meta.hrl").
+-include_lib("form/include/meta.hrl").
 -include_lib("bpe/include/bpe.hrl").
 
 doc(phone)               -> #phone{};
