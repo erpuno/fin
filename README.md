@@ -1,33 +1,14 @@
 FIN: Financial Management
 =========================
 
-Prerequisites
--------------
-
-* cmake (rocksdb)
-
-Schema
-------
+Run
+---
 
 ```
--record(person, {}).
--record(account, {}).
--record(tx, {}).
--record(card, {}).
--record(currency, {}).
--record(program, {}).
-```
-
-Processes
----------
-
-```
--record('Account', {}).
--record('Open', {}).
--record('Close', {}).
--record('Charge', {}).
--record('Withdraw', {}).
--record('Card', {}).
+$ mad get bank
+$ cd deps/bank
+$ mad dep com pla rep
+$ open https://localhost:8041/app/index.html
 ```
 
 Credits
