@@ -7,11 +7,11 @@
 event({client,{form,Module}}) ->
     nitro:insert_bottom(stand, #h3{body=nitro:to_binary(Module)}),
     nitro:insert_bottom(stand, #h5{body=Module:doc(),style="margin-bottom: 10px;"}),
-    nitro:insert_bottom(stand, (forms:new(Module:new(Module,Module:id()), Module:id()))#panel{class=form});
+    nitro:insert_bottom(stand, (form:new(Module:new(Module,Module:id()), Module:id()))#panel{class=form});
 
 event(init) ->
     nitro:clear(stand),
-    [ self() ! {client,{form,F}} || F <- application:get_env(forms, registry, []) ],
+    [ self() ! {client,{form,F}} || F <- application:get_env(form, registry, []) ],
     ?LOG_INFO("HELO.~n",[]);
 
 event({Event,Name}) ->

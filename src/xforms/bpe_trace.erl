@@ -10,7 +10,7 @@ id() -> #hist{task={task,'Init'}}.
 new(Name,Hist) ->
     Task = case element(#hist.task,Hist) of [] -> (id())#hist.task; X -> X end,
     Docs = element(#hist.docs,Hist),
-    #panel { id=forms:atom([tr,nitro:to_list(Name)]),
+    #panel { id=form:atom([tr,nitro:to_list(Name)]),
              class=td,
              body=[
         #panel{class=column6,   body = io_lib:format("~s",[nitro:to_list(element(2,Task))]) },

@@ -7,7 +7,7 @@
 doc() -> "One-time password PIN control used in banks,".
 id() -> #phone{}.
 new(Name,_Phone) ->
-    #document { name = forms:atom([otp,Name]),
+    #document { name = form:atom([otp,Name]),
     sections = [ #sec { name=[<<"Input the credentials: "/utf8>> ] } ],
     buttons  = [ #but { id=decline,
                         name=decline,
@@ -19,7 +19,7 @@ new(Name,_Phone) ->
                         title = <<"Proceed"/utf8>>,
                         class = [button,sgreen],
                         sources = [user,otp],
-                        postback = {'Next',forms:atom([otp,otp,Name])}}],
+                        postback = {'Next',form:atom([otp,otp,Name])}}],
     fields = [ #field { id=user,
                         name=user,
                         type=string,

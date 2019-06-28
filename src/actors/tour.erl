@@ -61,5 +61,5 @@ test() ->
     bpe:amend(Id,#join_application{name=doxtop,data=2}),
     bpe:amend(Id,#join_application{name=maxim,data=3}),
     bpe:complete(Id),
-    bpe:process(Id)
+    bpe:proc(Id)
        end.

@@ -8,7 +8,7 @@ event(init) ->
     nitro:clear(stand),
       Module = bpe_pass,
       nitro:insert_bottom(stand,
-                forms:new(Module:new(Module,Module:id()), Module:id()));
+                form:new(Module:new(Module,Module:id()), Module:id()));
 
 event({'Next',_}) ->
     nitro:redirect("actors.htm");
