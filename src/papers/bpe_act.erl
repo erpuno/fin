@@ -11,7 +11,7 @@ event(init) ->
    nitro:clear(tableRow),
    Bin = nitro:qc(p),
    Id = try binary_to_list(Bin) catch _:_ -> 0 end,
-   case kvs:get(process,Id) of
+   case kvs:get("/bpe/proc",Id) of
         {error,not_found} ->
            nitro:update(n, "ERR"),
            nitro:update(desc, "No process found."),
