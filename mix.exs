@@ -3,7 +3,7 @@ defmodule BANK.Mixfile do
 
   def project() do
     [
-      app: :bank,
+      app: :fin,
       version: "0.7.0",
       description: "BANK Financial Management",
       package: package(),
