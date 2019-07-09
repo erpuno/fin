@@ -1,4 +1,4 @@
-defmodule BANK.Mixfile do
+defmodule FIN.Mixfile do
   use Mix.Project
 
   def project() do
@@ -21,7 +21,7 @@ defmodule BANK.Mixfile do
   end
 
   def application(),
-    do: [mod: {:bank, []}, applications: [:rocksdb, :ranch, :cowboy, :kvs, :syn, :n2o]]
+    do: [mod: {:fin, []}, applications: [:rocksdb, :ranch, :cowboy, :kvs, :syn, :n2o]]
 
   def deps() do
     [

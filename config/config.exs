@@ -2,7 +2,7 @@ use Mix.Config
 
 config :n2o,
   pickler: :n2o_secret,
-  app: :bank,
+  app: :fin,
   mq: :n2o_syn,
   port: 8041,
   mqtt_services: ['erp', 'plm'],
