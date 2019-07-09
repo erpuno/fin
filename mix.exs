@@ -4,7 +4,7 @@ defmodule FIN.Mixfile do
   def project() do
     [
       app: :fin,
-      version: "0.7.0",
+      version: "0.7.1",
       description: "BANK Financial Management",
       package: package(),
       elixir: "~> 1.7",
