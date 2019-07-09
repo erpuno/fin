@@ -1,14 +1,14 @@
 -module(bpe_validation).
 -author('Maxim Sokhatsky <maxim@synrc.com>').
 -compile(export_all).
--include_lib("bank/include/bank/otp.hrl").
--include_lib("bank/include/bank/phone.hrl").
--include_lib("bank/include/bank/sid.hrl").
--include_lib("bank/include/bank/transaction.hrl").
--include_lib("bank/include/bank/currency.hrl").
--include_lib("bank/include/bank/client.hrl").
--include_lib("bank/include/bank/account.hrl").
--include_lib("bank/include/bank/card.hrl").
+-include("bank/otp.hrl").
+-include("bank/phone.hrl").
+-include("bank/sid.hrl").
+-include("bank/transaction.hrl").
+-include("bank/currency.hrl").
+-include("bank/client.hrl").
+-include("bank/account.hrl").
+-include("bank/card.hrl").
 -include_lib("form/include/meta.hrl").
 -include_lib("bpe/include/bpe.hrl").
 
