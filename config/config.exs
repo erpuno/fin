@@ -5,8 +5,8 @@ config :n2o,
   app: :fin,
   mq: :n2o_syn,
   port: 8041,
-  mqtt_services: ['erp', 'plm'],
-  ws_services: ['chat'],
+  mqtt_services: [:erp, :plm],
+  ws_services: [:chat],
   protocols: [:n2o_heart, :n2o_nitro, :n2o_ftp, :bpe_n2o],
   routes: :bank_route
 
