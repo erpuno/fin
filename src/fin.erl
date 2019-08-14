@@ -6,5 +6,12 @@
 stop(_)    -> ok.
 init([])   -> {ok, { {one_for_one, 5, 10}, []} }.
 start(_,_) -> kvs:join(),
-              cowboy:start_tls(http, n2o_cowboy:env(fin), #{env => #{dispatch => n2o_cowboy2:points()} }),
+              X = cowboy:start_tls(http, env(fin), #{env => #{dispatch => n2o_cowboy2:points()} }),
+              io:format("Cowboy: ~p~n",[X]),
               supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+env(App) -> [{port,       application:get_env(n2o,port,8041)},
+             {certfile,   code:priv_dir(App)++"/ssl/certfile.pem"},
+             {keyfile,    code:priv_dir(App)++"/ssl/keyfile.pem"},
+             {cacertfile, code:priv_dir(App)++"/ssl/cacertfile.pem"}].
+
