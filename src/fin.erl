@@ -11,6 +11,11 @@ start(_,_) -> kvs:join(),
               supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
 env(App) -> [{port,       application:get_env(n2o,port,8041)},
+%         {verify,verify_peer},
+         {verify_fun,{fun(OtpCert, Event, State) ->
+           io:format("Verify: ~p~n",[Event]),
+           {valid, State} end,[]}},
              {certfile,   code:priv_dir(App)++"/ssl/server.pem"},
              {keyfile,    code:priv_dir(App)++"/ssl/server.key"},
-             {cacertfile, code:priv_dir(App)++"/ssl/caroot.pem"}].
+             {cacertfile, code:priv_dir(App)++"/ssl/caroot.pem"}
+             ].
