@@ -1,6 +1,8 @@
 FIN: Financial Management
 =========================
 
+[![Hex pm](http://img.shields.io/hexpm/v/fin.svg?style=flat)](https://hex.pm/packages/fin)
+
 Run
 ---
 
