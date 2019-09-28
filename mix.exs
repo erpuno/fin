@@ -26,14 +26,14 @@ defmodule FIN.Mixfile do
   def deps() do
     [
       {:ex_doc, "~> 0.20.2", only: :dev},
+      {:rpc, "~> 0.9.1"},
       {:cowboy, "~> 2.5"},
-      {:rocksdb, "~> 1.2.0"},
-      {:bpe, "~> 4.7.3"},
+      {:rocksdb, "~> 1.3.2"},
+      {:bpe, "~> 4.9.4"},
       {:nitro, "~> 4.7.3"},
       {:form, "~> 4.7.0"},
       {:syn, "~> 1.6.3"},
-      {:n2o, "~> 6.8.1"},
-      {:kvs, "~> 6.7.4"}
+      {:n2o, "~> 6.8.1"}
     ]
   end
 end

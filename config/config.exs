@@ -17,3 +17,17 @@ config :kvs,
 
 config :form,
   registry: [:bpe_row,:bpe_trace,:bpe_otp,:bpe_act]
+
+config :bpe,
+  procmodules: [:bpe, :bpe_account],
+  logger_level: :debug,
+  logger: [{:handler, :synrc, :logger_std_h,
+            %{level: :debug,
+              id: :synrc,
+              max_size: 2000,
+              module: :logger_std_h,
+              config: %{type: :file, file: 'fin.log'},
+              formatter: {:logger_formatter,
+                          %{template: [:time,' ',:pid,' ',:module,' ',:msg,'\n'],
+                            single_line: true,}}}}]
+

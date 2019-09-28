@@ -4,7 +4,7 @@
 -record('Token', {data= [] :: binary()}).
 -record(io, {code= [] :: term(),data = [] :: [] | #'Token'{} | #process{} | #io{} | term() }).
 
-%-compile({parse_transform, bert_javascript}).
+-compile({parse_transform, bert_javascript}).
 -compile(export_all).
 
 info(#'Amen'{id=Proc,docs=Docs},R,S) -> {reply,{bert,#io{data=bpe:amend(Proc,Docs)}},R,S};
