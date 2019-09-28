@@ -15,7 +15,7 @@ config :kvs,
   dba_st: :kvs_st,
   schema: [:kvs, :kvs_stream, :bpe_metainfo, :bank_kvs]
 
-config :bert,
+config :rpc,
   js: 'priv/static'
 
 config :form,

@@ -26,7 +26,7 @@ defmodule FIN.Mixfile do
   def deps() do
     [
       {:ex_doc, "~> 0.20.2", only: :dev},
-      {:rpc, "~> 0.9.1"},
+      {:rpc, "~> 0.9.2"},
       {:cowboy, "~> 2.5"},
       {:rocksdb, "~> 1.3.2"},
       {:bpe, "~> 4.9.4"},
