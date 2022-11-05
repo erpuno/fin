@@ -44,14 +44,13 @@ event({'Spawn',_}) ->
     Id = case bpe:start(Atom:def(), []) of
               {error,I} -> I;
               {ok,I} -> I end,
-    io:format("trsty ~p: ~p~n",[Id,Atom]),
     nitro:insert_after(header, bpe_row:new(form:atom([row,Id]),bpe:proc(Id))),
     nitro:hide(frms),
     nitro:show(ctrl),
     ?LOG_INFO("BPE: ~p.~n", [Id]);
 
 event({'TypeSelect'}) ->
-    [ io:format("Process Dictionary: ~p : ~p~n",[X,erlang:get(X)]) || X <- erlang:get_keys()],
+%    [ io:format("Process Dictionary: ~p : ~p~n",[X,erlang:get(X)]) || X <- erlang:get_keys()],
     io:format("~p",["Type Select"]);
 
 event({'Discard',[]}) ->

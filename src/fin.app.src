@@ -1,7 +1,7 @@
 {application, fin,
  [
   {description, "FIN Account Management"},
-  {vsn, "0.7.1"},
+  {vsn, "1.11.1"},
   {registered, []},
   {applications, [public_key,asn1,kernel,stdlib,rocksdb,mnesia,ranch,cowboy,
                   nitro,syntax_tools,compiler,xmerl,kvs,syn,n2o,bpe,form]},

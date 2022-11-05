@@ -4,7 +4,7 @@ defmodule FIN.Mixfile do
   def project() do
     [
       app: :fin,
-      version: "0.7.1",
+      version: "1.11.1",
       description: "FIN Financial Management",
       package: package(),
       elixir: "~> 1.11",
@@ -32,7 +32,7 @@ defmodule FIN.Mixfile do
       {:cowboy, "~> 2.9.0"},
       {:rocksdb, "~> 1.6.0"},
       {:syn, "2.1.0"},
-      {:bpe, "~> 7.10.4"},
+      {:bpe, "~> 7.11.0"},
       {:nitro, "~> 7.8.0"},
       {:form, "~> 7.8.0"},
       {:n2o, "~> 8.12.1"}

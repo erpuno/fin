@@ -3,8 +3,8 @@
 -include_lib("nitro/include/nitro.hrl").
 -include_lib("form/include/meta.hrl").
 -include_lib("bpe/include/bpe.hrl").
+-include("act.hrl").
 -compile(export_all).
--record(pi, {code='Spawnproc'}).
 
 event(init) ->
    nitro:clear(tableHead),
@@ -21,9 +21,11 @@ event(init) ->
            nitro:update(n, Bin),
            nitro:update(num, Bin),
    History = bpe:hist(Id),
- [ begin nitro:insert_bottom(tableRow,
-io:format("I: ~p",[I]),
-   bpe_trace:new(form:atom([trace,nitro:to_list(I#hist.id)]),I))
+ [ begin 
+     {step,No,Step} = I#hist.id,
+     Name = nitro:to_list(No)++"-"++nitro:to_list(Step),
+     Trace = bpe_trace:new(form:atom([trace,Name]),I),
+     nitro:insert_bottom(tableRow, Trace)
    end 
    || I <- History ]
    end;
@@ -38,8 +40,9 @@ header() ->
      #panel{class=column6,body="Documents"}]}.
 
 doc() -> "Dialog for creation of BPE processes.".
-id() -> #pi{}.
-new(Name,{pi,_Code}, _) ->
+id() -> #act{}.
+new(Name,#act{}, _) ->
+  put(process_type_pi_none, "bpe_account"),
   #document { name = form:atom([pi,Name]), sections = [
       #sec { name=[<<"New process: "/utf8>>] } ],
     buttons  = [ #but { id=form:atom([pi,decline]),
@@ -56,7 +59,7 @@ new(Name,{pi,_Code}, _) ->
                         type=select,
                         title= "Type",
                         tooltips = [],
-                        options = [ #opt{name=fin_account,checked=true,title = "Client Account [FIN.ERP.UNO]"},
-                                    #opt{name=bpe_account,title = "Unknown"} ],
+                        default = bpe_account,
+                        options = [ #opt{name=bpe_account,checked=true,title = "Client Account [FIN.ERP.UNO]"} ],
                         postback = {'TypeSelect'}
                        } ] }.

@@ -1,9 +1,8 @@
--include_lib("bank/include/bpe.hrl").
--include_lib("bank/include/phone.hrl").
--include_lib("bank/include/requests.hrl").
--include_lib("bank/include/otp.hrl").
--include_lib("bank/include/sid.hrl").
--include_lib("bank/include/customer.hrl").
--include_lib("bank/include/payment.hrl").
--include_lib("bank/include/account.hrl").
--include_lib("bank/include/card.hrl").
+-include("bank/phone.hrl").
+-include("bank/otp.hrl").
+-include("bank/sid.hrl").
+-include("bank/account.hrl").
+-include("bank/card.hrl").
+
+-record(act, {code='Spawnproc',process_type="Normal"}).
+
