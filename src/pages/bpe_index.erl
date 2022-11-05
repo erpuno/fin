@@ -25,7 +25,7 @@ event(init) ->
     nitro:insert_bottom(frms, form:new(Module:new(Module,Module:id(), []), Module:id(), [])),
     nitro:insert_bottom(ctrl, #link{id=creator, body="New",postback=create, class=[button,sgreen]}),
     nitro:hide(frms),
-  [ nitro:insert_top(tableRow, bpe_row:new(form:atom([row,I#process.id]),I))
+  [ nitro:insert_top(tableRow, bpe_row:new(form:atom([row,I#process.id]),I,[]))
  || I <- kvs:all("/bpe/proc") ],
     ok;
 
@@ -33,7 +33,7 @@ event({complete,Id}) ->
     bpe:start(bpe:load(Id),[]),
     io:format("Next: ~p~n",[bpe:next(Id)]),
     nitro:update(form:atom([tr,row,Id]),
-                bpe_row:new(form:atom([row,Id]),bpe:load(Id)));
+                bpe_row:new(form:atom([row,Id]),bpe:load(Id),[]));
 
 event(create) ->
     nitro:hide(ctrl),
@@ -44,7 +44,7 @@ event({'Spawn',_}) ->
     Id = case bpe:start(Atom:def(), []) of
               {error,I} -> I;
               {ok,I} -> I end,
-    nitro:insert_after(header, bpe_row:new(form:atom([row,Id]),bpe:proc(Id))),
+    nitro:insert_after(header, bpe_row:new(form:atom([row,Id]),bpe:proc(Id),[])),
     nitro:hide(frms),
     nitro:show(ctrl),
     ?LOG_INFO("BPE: ~p.~n", [Id]);

@@ -8,7 +8,7 @@ doc() -> "This is the actor table row representation in FORM CSS. Used to draw a
          " in <a href=\"actors.htm\">BPE process table</a> but displayed as class=form.".
 id() -> #process{}.
 current(Proc) -> {_,T} = bpe:current_task(Proc), T.
-new(Name,Proc) -> 
+new(Name,Proc,_) -> 
     Pid = nitro:to_list(Proc#process.id),
     Docs = Proc#process.docs,
     #panel { id=form:atom([tr,Name]),

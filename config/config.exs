@@ -20,7 +20,7 @@ config :rpc,
 
 config :form,
   module: :form_backend,
-  registry: [:bpe_row,:bpe_trace,:bpe_otp,:bpe_act]
+  registry: [:bpe_row,:bpe_act]
 
 config :bpe,
   procmodules: [:bpe, :bpe_account],

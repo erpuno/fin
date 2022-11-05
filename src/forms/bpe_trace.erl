@@ -6,8 +6,8 @@
 
 doc() -> "This is the actor trace row (step) representation. "
          "Used to draw trace of the processes".
-id() -> #hist{task=#sequenceFlow{source='Init'}}.
-new(Name,Hist) ->
+id() -> #hist{task=#sequenceFlow{source="Init"}}.
+new(Name,Hist,_) ->
     Task = case Hist#hist.task of [] -> (id())#hist.task; X -> X end,
     Docs = Hist#hist.docs,
     #panel { id=form:atom([tr,nitro:to_list(Name)]), class=td, body=[
@@ -15,5 +15,5 @@ new(Name,Hist) ->
         #panel{class=column20,  body = string:join(lists:map(fun(X)-> nitro:to_list([element(1,X)]) end,Docs),", ")}
        ]}.
 
-name(#sequenceFlow{source=Task}) -> Task;
+name(#sequenceFlow{source=Task}) -> nitro:to_list(Task);
 name(_) -> [].

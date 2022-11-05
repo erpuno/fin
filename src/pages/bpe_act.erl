@@ -24,7 +24,7 @@ event(init) ->
  [ begin 
      {step,No,Step} = I#hist.id,
      Name = nitro:to_list(No)++"-"++nitro:to_list(Step),
-     Trace = bpe_trace:new(form:atom([trace,Name]),I),
+     Trace = bpe_trace:new(form:atom([trace,Name]),I,[]),
      nitro:insert_bottom(tableRow, Trace)
    end 
    || I <- History ]
