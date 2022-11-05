@@ -7,10 +7,9 @@ Run
 ---
 
 ```
-$ mad get bank
-$ cd deps/bank
-$ mad dep com pla rep
-$ open https://localhost:8041/app/index.html
+$ mix deps.get
+$ iex -S mix
+$ open http://localhost:8041/app/index.html
 ```
 
 Credits
