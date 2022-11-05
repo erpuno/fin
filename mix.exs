@@ -14,7 +14,7 @@ defmodule FIN.Mixfile do
 
   def package() do
     [
-      files: ~w(doc include lib priv src mix.exs LICENSE),
+      files: ~w(doc include priv src mix.exs LICENSE),
       licenses: ["ISC"],
       links: %{"GitHub" => "https://github.com/erpuno/fin"}
     ]
