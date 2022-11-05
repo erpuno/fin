@@ -6,16 +6,8 @@
 stop(_)    -> ok.
 init([])   -> {ok, { {one_for_one, 5, 10}, []} }.
 start(_,_) -> kvs:join(),
-              X = cowboy:start_tls(http, env(fin), #{env => #{dispatch => n2o_cowboy2:points()} }),
-              io:format("Cowboy: ~p~n",[X]),
+              cowboy:start_clear(http,
+                       [{port, application:get_env(n2o, port, 8041)}],
+                       #{env => #{dispatch => n2o_cowboy:points()}}),
               supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-env(App) -> [{port,       application:get_env(n2o,port,8041)},
-%         {verify,verify_peer},
-%         {verify_fun,{fun(OtpCert, Event, State) ->
-%           io:format("Verify: ~p~n",[Event]),
-%           {valid, State} end,[]}},
-             {certfile,   code:priv_dir(App)++"/ssl/server.pem"},
-             {keyfile,    code:priv_dir(App)++"/ssl/server.key"},
-             {cacertfile, code:priv_dir(App)++"/ssl/caroot.pem"}
-             ].

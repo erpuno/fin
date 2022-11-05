@@ -17,5 +17,5 @@ Credits
 -------
 
 * Maxim Sokhatsky
-* Vladimir Kirillov
+
 

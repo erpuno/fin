@@ -7,7 +7,7 @@ config :n2o,
   port: 8041,
   mqtt_services: [:erp, :plm],
   ws_services: [:chat],
-  protocols: [:n2o_heart, :n2o_nitro, :n2o_ftp, :bpe_n2o2],
+  protocols: [:n2o_heart, :nitro_n2o, :n2o_ftp],
   routes: :bank_route
 
 config :kvs,
@@ -19,13 +19,14 @@ config :rpc,
   js: 'priv/static'
 
 config :form,
+  module: :form_backend,
   registry: [:bpe_row,:bpe_trace,:bpe_otp,:bpe_act]
 
 config :bpe,
   procmodules: [:bpe, :bpe_account],
-  logger_level: :debug,
+  logger_level: :info,
   logger: [{:handler, :synrc, :logger_std_h,
-            %{level: :debug,
+            %{level: :info,
               id: :synrc,
               max_size: 2000,
               module: :logger_std_h,

@@ -5,35 +5,37 @@ defmodule FIN.Mixfile do
     [
       app: :fin,
       version: "0.7.1",
-      description: "BANK Financial Management",
+      description: "FIN Financial Management",
       package: package(),
-      elixir: "~> 1.7",
+      elixir: "~> 1.11",
       deps: deps()
     ]
   end
 
   def package() do
     [
-      files: ~w(doc include priv src mix.exs LICENSE),
+      files: ~w(doc include lib priv src mix.exs LICENSE),
       licenses: ["ISC"],
-      links: %{"GitHub" => "https://github.com/synrc/bank"}
+      links: %{"GitHub" => "https://github.com/erpuno/fin"}
     ]
   end
 
   def application(),
-    do: [mod: {:fin, []}, applications: [:public_key, :asn1, :rocksdb, :ranch, :cowboy, :kvs, :syn, :bpe, :nitro, :form, :n2o]]
+    do: [mod: {:fin, []},
+         applications: [:public_key, :asn1, :rocksdb, :ranch,
+                        :cowboy, :kvs, :syn, :bpe, :nitro, :form, :n2o]]
 
   def deps() do
     [
       {:ex_doc, "~> 0.20.2", only: :dev},
-      {:rpc, "~> 0.9.2"},
-      {:cowboy, "~> 2.5"},
-      {:rocksdb, "~> 1.3.2"},
-      {:bpe, "~> 4.9.4"},
-      {:nitro, "~> 4.7.3"},
-      {:form, "~> 4.7.0"},
-      {:syn, "~> 1.6.3"},
-      {:n2o, "~> 6.8.1"}
+      {:rpc, "~> 3.11.1"},
+      {:cowboy, "~> 2.9.0"},
+      {:rocksdb, "~> 1.6.0"},
+      {:syn, "2.1.0"},
+      {:bpe, "~> 7.10.4"},
+      {:nitro, "~> 7.8.0"},
+      {:form, "~> 7.8.0"},
+      {:n2o, "~> 8.12.1"}
     ]
   end
 end

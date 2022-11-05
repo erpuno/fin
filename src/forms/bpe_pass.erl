@@ -1,18 +1,18 @@
 -module(bpe_pass).
 -copyright('Maxim Sokhatsky').
 -include_lib("form/include/meta.hrl").
+-include("bank/phone.hrl").
 -compile(export_all).
--record(phone, {code="+380490000000",number=[]}).
 
 doc() -> "One-time password PIN control used in banks,".
 id() -> #phone{}.
-new(Name,_Phone) ->
+new(Name,_Phone,_) ->
     #document { name = form:atom([otp,Name]),
     sections = [ #sec { name=[<<"Input the credentials: "/utf8>> ] } ],
     buttons  = [ #but { id=decline,
                         name=decline,
                         title= <<"Cancel"/utf8>>,
-                        class=cancel,
+                        class=[cancel],
                         postback={'Close',[]} },
                  #but { id=proceed,
                         name=proceed,
@@ -20,17 +20,15 @@ new(Name,_Phone) ->
                         class = [button,sgreen],
                         sources = [user,otp],
                         postback = {'Next',form:atom([otp,otp,Name])}}],
-    fields = [ #field { id=user,
-                        name=user,
+    fields = [ #field { id=number,
+                        name=number,
                         type=string,
                         title= <<"Login:"/utf8>>,
                         labelClass=label,
-                        pos=2,
-                        fieldClass=column3},
-               #field { id=otp,
-                        name=otp,
-                        type=otp,
+                        fieldClass=column6},
+               #field { id=auth,
+                        name=auth,
+                        type=string,
                         title= <<"Pass:"/utf8>>,
                         labelClass=label,
-                        pos=3,
-                        fieldClass=column3}]}.
+                        fieldClass=column20}]}.

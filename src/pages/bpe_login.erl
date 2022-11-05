@@ -6,9 +6,12 @@
 
 event(init) ->
     nitro:clear(stand),
-      Module = bpe_pass,
-      nitro:insert_bottom(stand,
-                form:new(Module:new(Module,Module:id()), Module:id()));
+    Module = bpe_pass,
+    Form = Module:new(Module,Module:id(),[]),
+    io:format("Form: ~p~n",[Form]),
+    HTML = form:new(Form, Module:id(), []),
+    io:format("HTML: ~p~n",[Form]),
+    nitro:insert_bottom(stand, HTML);
 
 event({'Next',_}) ->
     nitro:redirect("actors.htm");

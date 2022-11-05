@@ -21,8 +21,10 @@ event(init) ->
            nitro:update(n, Bin),
            nitro:update(num, Bin),
    History = bpe:hist(Id),
- [ nitro:insert_bottom(tableRow,
+ [ begin nitro:insert_bottom(tableRow,
+io:format("I: ~p",[I]),
    bpe_trace:new(form:atom([trace,nitro:to_list(I#hist.id)]),I))
+   end 
    || I <- History ]
    end;
 
@@ -37,7 +39,7 @@ header() ->
 
 doc() -> "Dialog for creation of BPE processes.".
 id() -> #pi{}.
-new(Name,{pi,_Code}) ->
+new(Name,{pi,_Code}, _) ->
   #document { name = form:atom([pi,Name]), sections = [
       #sec { name=[<<"New process: "/utf8>>] } ],
     buttons  = [ #but { id=form:atom([pi,decline]),
@@ -54,8 +56,7 @@ new(Name,{pi,_Code}) ->
                         type=select,
                         title= "Type",
                         tooltips = [],
-                        options = [ #opt{name=quant_1,title = "Client Acquire [QUANTERALL]"},
-                                    #opt{name=quant_2,title = "Client Tracking [QUANTERALL]"},
-                                    #opt{name=bpe_account,checked=true,title = "Client Account [SYNRC FIN]"},
-                                    #opt{name=tour,title = "Tournaments [ESM.ONE]"}
-                       ]}]}.
+                        options = [ #opt{name=fin_account,checked=true,title = "Client Account [FIN.ERP.UNO]"},
+                                    #opt{name=bpe_account,title = "Unknown"} ],
+                        postback = {'TypeSelect'}
+                       } ] }.

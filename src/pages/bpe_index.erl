@@ -22,7 +22,7 @@ event(init) ->
     nitro:clear(frms),
     nitro:clear(ctrl),
     Module = bpe_act,
-    nitro:insert_bottom(frms, form:new(Module:new(Module,Module:id()), Module:id())),
+    nitro:insert_bottom(frms, form:new(Module:new(Module,Module:id(), []), Module:id(), [])),
     nitro:insert_bottom(ctrl, #link{id=creator, body="New",postback=create, class=[button,sgreen]}),
     nitro:hide(frms),
   [ nitro:insert_top(tableRow, bpe_row:new(form:atom([row,I#process.id]),I))
@@ -31,7 +31,7 @@ event(init) ->
 
 event({complete,Id}) ->
     bpe:start(bpe:load(Id),[]),
-    io:format("Complete: ~p~n",[bpe:complete(Id)]),
+    io:format("Next: ~p~n",[bpe:next(Id)]),
     nitro:update(form:atom([tr,row,Id]),
                 bpe_row:new(form:atom([row,Id]),bpe:load(Id)));
 
@@ -40,7 +40,7 @@ event(create) ->
     nitro:show(frms);
 
 event({'Spawn',_}) ->
-    Atom = nitro:to_atom(nitro:q("process_type_pi_bpe_act")),
+    Atom = nitro:to_atom(nitro:q(process_type_pi_none)),
     Id = case bpe:start(Atom:def(), []) of
               {error,I} -> I;
               {ok,I} -> I end,
@@ -49,6 +49,10 @@ event({'Spawn',_}) ->
     nitro:hide(frms),
     nitro:show(ctrl),
     ?LOG_INFO("BPE: ~p.~n", [Id]);
+
+event({'TypeSelect'}) ->
+    [ io:format("Process Dictionary: ~p : ~p~n",[X,erlang:get(X)]) || X <- erlang:get_keys()],
+    io:format("~p",["Type Select"]);
 
 event({'Discard',[]}) ->
     nitro:hide(frms),
