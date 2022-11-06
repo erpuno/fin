@@ -4,7 +4,7 @@ defmodule FIN.Mixfile do
   def project() do
     [
       app: :fin,
-      version: "3.11.3",
+      version: "3.11.4",
       description: "FIN Client Account Transaction Management",
       package: package(),
       elixir: "~> 1.11",
@@ -15,7 +15,7 @@ defmodule FIN.Mixfile do
   def package() do
     [
       files: ~w(doc include priv src mix.exs LICENSE),
-      licenses: ["ISC"],
+      licenses: ["DHARMA"],
       links: %{"GitHub" => "https://github.com/erpuno/fin"}
     ]
   end
