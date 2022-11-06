@@ -2,7 +2,7 @@
 -copyright('Maxim Sokhatsky').
 -include_lib("form/include/meta.hrl").
 -include("bank/phone.hrl").
--compile(export_all).
+-export([doc/0,id/0,new/3]).
 
 doc() -> "One-time password PIN control used in banks,".
 id() -> #phone{}.

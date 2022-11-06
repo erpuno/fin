@@ -1,6 +1,6 @@
 -module(bpe_trace).
 -copyright('Maxim Sokhatsky').
--compile(export_all).
+-export([doc/0,id/0,new/3]).
 -include_lib("bpe/include/bpe.hrl").
 -include_lib("nitro/include/nitro.hrl").
 

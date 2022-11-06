@@ -1,6 +1,6 @@
 -module(bpe_index).
 -copyright('Maxim Sokhatsky').
--compile(export_all).
+-export([event/1]).
 -include_lib("n2o/include/n2o.hrl").
 -include_lib("bpe/include/bpe.hrl").
 -include_lib("nitro/include/nitro.hrl").
@@ -21,7 +21,7 @@ event(init) ->
     nitro:insert_top(tableHead, header()),
     nitro:clear(frms),
     nitro:clear(ctrl),
-    Module = bpe_act,
+    Module = bpe_create,
     nitro:insert_bottom(frms, form:new(Module:new(Module,Module:id(), []), Module:id(), [])),
     nitro:insert_bottom(ctrl, #link{id=creator, body="New",postback=create, class=[button,sgreen]}),
     nitro:hide(frms),
@@ -30,10 +30,11 @@ event(init) ->
     ok;
 
 event({complete,Id}) ->
-    bpe:start(bpe:load(Id),[]),
-    io:format("Next: ~p~n",[bpe:next(Id)]),
-    nitro:update(form:atom([tr,row,Id]),
-                bpe_row:new(form:atom([row,Id]),bpe:load(Id),[]));
+    Proc = bpe:load(Id),
+    bpe:start(Proc,[]),
+    bpe:next(Id),
+    nitro:update(form:atom([tr,row,Id]), bpe_row:new(form:atom([row,Id]),Proc,[])),
+    ok;
 
 event(create) ->
     nitro:hide(ctrl),
@@ -46,20 +47,14 @@ event({'Spawn',_}) ->
               {ok,I} -> I end,
     nitro:insert_after(header, bpe_row:new(form:atom([row,Id]),bpe:proc(Id),[])),
     nitro:hide(frms),
-    nitro:show(ctrl),
-    ?LOG_INFO("BPE: ~p.~n", [Id]);
-
-event({'TypeSelect'}) ->
-%    [ io:format("Process Dictionary: ~p : ~p~n",[X,erlang:get(X)]) || X <- erlang:get_keys()],
-    io:format("~p",["Type Select"]);
+    nitro:show(ctrl);
 
 event({'Discard',[]}) ->
     nitro:hide(frms),
     nitro:show(ctrl);
 
 event({Event,Name}) ->
-    nitro:wire(lists:concat(["console.log(\"",io_lib:format("~p",[{Event,Name}]),"\");"])),
-    ?LOG_INFO("Event:~p.~n", [{Event,Name}]);
+    nitro:wire(lists:concat(["console.log(\"",io_lib:format("~p",[{Event,Name}]),"\");"]));
 
 event(Event) ->
-    ?LOG_INFO("Unknown:~p.~n", [Event]).
+    ok.

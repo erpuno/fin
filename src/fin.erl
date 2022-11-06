@@ -1,5 +1,4 @@
 -module(fin).
--compile(export_all).
 -behaviour(application).
 -behaviour(supervisor).
 -export([start/2, stop/1, init/1]).

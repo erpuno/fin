@@ -5,22 +5,17 @@ config :n2o,
   app: :fin,
   mq: :n2o_syn,
   port: 8041,
-  mqtt_services: [:erp, :plm],
-  ws_services: [:chat],
   protocols: [:n2o_heart, :nitro_n2o, :n2o_ftp],
-  routes: :bank_route
+  routes: :fin_route
 
 config :kvs,
   dba: :kvs_rocks,
   dba_st: :kvs_st,
-  schema: [:kvs, :kvs_stream, :bpe_metainfo, :bank_kvs]
-
-config :rpc,
-  js: 'priv/static'
+  schema: [:kvs, :kvs_stream, :bpe_metainfo, :fin_kvs]
 
 config :form,
   module: :form_backend,
-  registry: [:bpe_row,:bpe_act]
+  registry: [:bpe_row,:bpe_create,:bpe_trace,:bpe_pass]
 
 config :bpe,
   procmodules: [:bpe, :bpe_account],

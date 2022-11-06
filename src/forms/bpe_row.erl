@@ -1,6 +1,6 @@
 -module(bpe_row).
 -copyright('Maxim Sokhatsky').
--compile(export_all).
+-export([doc/0,id/0,new/3]).
 -include_lib("bpe/include/bpe.hrl").
 -include_lib("nitro/include/nitro.hrl").
 
@@ -11,9 +11,7 @@ current(Proc) -> {_,T} = bpe:current_task(Proc), T.
 new(Name,Proc,_) -> 
     Pid = nitro:to_list(Proc#process.id),
     Docs = Proc#process.docs,
-    #panel { id=form:atom([tr,Name]),
-             class=td,
-             body=[
+    #panel { id=form:atom([tr,Name]), class=td, body=[
         #panel{class=column6,   body = #link{href="act.htm?p="++Pid, body=Pid } },
         #panel{class=column6,   body = nitro:to_list(Proc#process.name) },
         #panel{class=column6,   body = nitro:to_list(current(Proc))},

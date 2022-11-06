@@ -1,14 +1,13 @@
--module(bank_kvs).
--compile(export_all).
+-module(fin_kvs).
+-export([metainfo/0,fin/0]).
 -include("bank/phone.hrl").
 -include("ent.hrl").
 -include_lib("kvs/include/metainfo.hrl").
 -include_lib("form/include/meta.hrl").
 
-metainfo() -> #schema { name = kvx,
-                        tables = lists:flatten([ bank()]) }.
+metainfo() -> #schema { name = fin, tables = fin() }.
 
-bank() ->
+fin() ->
        [
         #table{name = phone,         fields=record_info(fields, phone), instance = #phone{} },
         #table{name = field,         fields=record_info(fields, field), instance = #field{} },
