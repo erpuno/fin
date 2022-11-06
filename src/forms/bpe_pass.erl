@@ -24,11 +24,9 @@ new(Name,_Phone,_) ->
                         name=number,
                         type=string,
                         title= <<"Login:"/utf8>>,
-                        labelClass=label,
-                        fieldClass=column6},
+                        labelClass=label},
                #field { id=auth,
                         name=auth,
                         type=string,
                         title= <<"Pass:"/utf8>>,
-                        labelClass=label,
-                        fieldClass=column20}]}.
+                        labelClass=label}]}.

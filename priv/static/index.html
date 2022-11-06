@@ -6,7 +6,7 @@
     <meta name="description" content="" />
     <meta name="author" content="Maxim Sokhatsky" />
     <title>FIN</title>
-    <link rel="stylesheet" href="css/synrc.css?v=2" />
+    <link rel="stylesheet" href="https://n2o.dev/blank.css" />
 </head>
 <body>
     <nav>
@@ -15,59 +15,44 @@
         <a href='http://localhost:8041/app/login.htm'>ADMIN</a>
     </nav>
     <header>
-         <a href="https://github.com/synrc/bank"><img src="https://crm.erp.uno/img/logo.svg"></a>
+         <a href="https://github.com/erpuno/fin"><img src="https://crm.erp.uno/img/logo.svg"/></a>
         <h1>FIN</h1>
-    </header>
-    <aside>
+    </header><aside>
         <article>
             <section>
-                <h3>SYNOPSIS</h3>
-                <div>BANK is an open source bank. It contains the very basic transfer and charge/withdrawal features.
-                     It also can issue cards, deposits and crypto accounts.</div>
+                <h3> СИНОПСИС</h3>
+                <div>FIN &mdash; це універсальний менеджер облікових записів,
+                     які містять історію тарифікованих транзакції. Облікові
+                     записи управляються BPMN процесами, активності яких визначені
+                     Erlang функціями. FIN, як приклад ERP.UNO може бути використаний
+                     як відправна точка для білінгових систем, банків, інших
+                     облікових систем.</div>
             </section>
             <section>
-            <h3>MODULES</h3>
-            <div><ul>
-                <li><a href="man/bank.htm">BANK</a></font></li>
-                <li><a href="man/bank_deposit.htm">DEPOSIT</a></font></li>
-                <li><a href="man/bank_credit.htm">CREDIT</a></font></li>
-                <li><a href="man/bank_fiat.htm">FIAT</a></font></li>
-                <li><a href="man/bank_crypto.htm">CRYPTO</a></font></li>
-            </ul></div>
-            <br>
+            <h3><a href="https://n2o.dev">МОДУЛІ</a></h3>
+            <div><ul><li><a href="#">ACT</a></li>
+                     <li><a href="#">INDEX</a></li>
+                     <li><a href="#">LOGIN</a></li>
+                     <li><a href="#">FORMS</a></li></ul></div>
+            <br />
             <div>
-                Nov 2018 &copy; <a href="https://github.com/5HT">Namdak Tonpa</a> ISC
+                NOV 2022 © Namdak Tonpa <a href="https://5HT.co/licence/">DHARMA</a> <br />
+                VER 3.11.2
             </div>
             </section>
         </article>
-    </aside>
-    <main>
+    </aside><main>
         <section>
-            <a name=intro><h3>INTRO</h3></a>
+            <a name="intro"></a><h3>INTRO</h3>
             <p>BPE is a business process managament application that brings Erlang for enterprises.
             It provides infrastructure for workflow definitions, process orchestration,
             rule based production systems and distributed storage.</p>
             <figure><code>
- $ mad get bank
- $ cd deps/bank
- $ mad dep com pla rep
+$ mix deps.get
+$ iex -S mix
+$ open http://localhost:8041/app/index.html
             </code></figure>
     </section>
-    <section>
-        <a name=intro><h3>PROTOCOL</h3></a>
-            <figure><code>
- -record(open,       { id=[] :: [] | integer() }).
- -record(close,      { id=[] :: [] | integer() }).
- -record(charge,     { id=[] :: [] | integer() }).
- -record(withdraw,   { id=[] :: [] | integer() }).
- -record(transfer,   { id=[] :: [] | integer() }).
-            </code></figure>
-    </section>
-</main>
-
-<footer>
-    Made with <span class="heart">❤</span> to N2O
-</footer>
-
-</body>
-</html>
+</main><footer>
+    Made with <span class="heart">❤</span> to BPE
+</footer></body></html>

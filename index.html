@@ -7,7 +7,6 @@
     <meta name="author" content="Maxim Sokhatsky" />
     <title>FIN</title>
     <link rel="stylesheet" href="https://n2o.dev/blank.css" />
-    <link rel="stylesheet" href="https://n2o.dev/zima.css" />
 </head>
 <body>
     <nav>
@@ -21,17 +20,24 @@
     </header><aside>
         <article>
             <section>
-                <h3> SYNOPSIS</h3>
-                <div>FIN is an open source bank. It contains the very basic transfer and charge/withdrawal features.
-                     It also can issue cards, deposits and crypto accounts.</div>
+                <h3> СИНОПСИС</h3>
+                <div>FIN &mdash; це універсальний менеджер облікових записів,
+                     які містять історію тарифікованих транзакції. Облікові
+                     записи управляються BPMN процесами, активності яких визначені
+                     Erlang функціями. FIN, як приклад ERP.UNO може бути використаний
+                     як відправна точка для білінгових систем, банків, інших
+                     облікових систем.</div>
             </section>
             <section>
-            <h3><a href="https://n2o.dev">MODULES</a></h3>
-            <div><ul><li><a href="man/bank.htm">FIN</a></li><li><a href="man/bank_deposit.htm">DEPOSIT</a></li><li><a href="man/bank_credit.htm">CREDIT</a></li><li><a href="man/bank_fiat.htm">FIAT</a></li><li><a href="man/bank_crypto.htm">CRYPTO</a></li></ul></div>
+            <h3><a href="https://n2o.dev">МОДУЛІ</a></h3>
+            <div><ul><li><a href="#">ACT</a></li>
+                     <li><a href="#">INDEX</a></li>
+                     <li><a href="#">LOGIN</a></li>
+                     <li><a href="#">FORMS</a></li></ul></div>
             <br />
             <div>
-                APR 2019 © <a href="https://github.com/5HT">Namdak Tonpa</a> ISC<br />
-                VER 5.4 0.9
+                NOV 2022 © Namdak Tonpa <a href="https://5HT.co/licence/">DHARMA</a> <br />
+                VER 3.11.2
             </div>
             </section>
         </article>
@@ -42,21 +48,11 @@
             It provides infrastructure for workflow definitions, process orchestration,
             rule based production systems and distributed storage.</p>
             <figure><code>
- $ mad get bank
- $ cd deps/bank
- $ mad dep com pla rep
-            </code></figure>
-    </section>
-    <section>
-        <a name="intro"></a><h3>PROTOCOL</h3>
-            <figure><code>
- -record(open,       { id=[] :: [] | integer() }).
- -record(close,      { id=[] :: [] | integer() }).
- -record(charge,     { id=[] :: [] | integer() }).
- -record(withdraw,   { id=[] :: [] | integer() }).
- -record(transfer,   { id=[] :: [] | integer() }).
+$ mix deps.get
+$ iex -S mix
+$ open http://localhost:8041/app/index.html
             </code></figure>
     </section>
 </main><footer>
-    Made with <span class="heart">❤</span> to N2O
+    Made with <span class="heart">❤</span> to BPE
 </footer></body></html>
