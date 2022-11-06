@@ -21,7 +21,7 @@ Login
 Actors
 -----
 
-![image](https://user-images.githubusercontent.com/144776/200148891-fe783705-037d-4217-894f-5de06e6180de.png)
+![image](https://user-images.githubusercontent.com/144776/200149056-cd37fab1-e440-4ba1-99ca-16f7cca621b8.png)
 
 Forms
 -----
