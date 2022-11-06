@@ -41,8 +41,8 @@ $ open http://localhost:8041/app/index.html
 
 * [bpe_pass](src/forms/bpe_pass.erl) Форма аутентифікації
 * [bpe_create](src/forms/bpe_create.erl) Форма створення процесу
-* [bpe_row](src/forms/bpe_row.erl) Таблична форма (рядок) відображення процесу
-* [bpe_trace](src/forms/bpe_row.erl) Таблична форма відображення кроку процесу
+* [bpe_row](src/forms/bpe_row.erl) Таблична форма-рядок відображення процесу
+* [bpe_trace](src/forms/bpe_row.erl) Таблична форма-рядок відображення кроку процесу
 
 ### Контролери сторінок
 
