@@ -18,10 +18,10 @@ Login
 
 ![image](https://user-images.githubusercontent.com/144776/200148867-67025100-560e-4dc5-bcdd-dacf88e50c83.png)
 
-Actors
------
+Processes
+---------
 
-![image](https://user-images.githubusercontent.com/144776/200149056-cd37fab1-e440-4ba1-99ca-16f7cca621b8.png)
+![image](https://user-images.githubusercontent.com/144776/200149087-e2a2af6a-bd5c-4006-b6fe-f3b95f12b11f.png)
 
 Forms
 -----
@@ -31,7 +31,7 @@ Forms
 Trace
 -----
 
-![image](https://user-images.githubusercontent.com/144776/200148900-fd43d90f-823a-4ef7-b145-a2c84895bf20.png)
+![image](https://user-images.githubusercontent.com/144776/200149114-dcd21f61-28a4-4aa9-a020-bcb2f70b7a1f.png)
 
 Credits
 -------
