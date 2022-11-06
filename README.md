@@ -23,20 +23,29 @@ $ open http://localhost:8041/app/index.html
 Аутентифікація
 --------------
 
+Сторінка аутентифікації та авторизаціх разом з системними сесіями є важливою частиною кожної ERP системи.
+У прикладі наведена PLAIN password HTML форма.
+
 ![image](https://user-images.githubusercontent.com/144776/200148867-67025100-560e-4dc5-bcdd-dacf88e50c83.png)
 
 Процеси
 -------
+
+Сторінка переліку BPE процесів ERP системи та форма для їх створення.
 
 ![image](https://user-images.githubusercontent.com/144776/200149087-e2a2af6a-bd5c-4006-b6fe-f3b95f12b11f.png)
 
 Форми
 -----
 
+Сторінка переліку всіх форм ERP системи.
+
 ![image](https://user-images.githubusercontent.com/144776/200148896-b09d25b6-2c67-4d1d-b851-aaadc9164c82.png)
 
 Транзакції
 ----------
+
+Сторінка історії кроків бізнес-процесу BPE.
 
 ![image](https://user-images.githubusercontent.com/144776/200149114-dcd21f61-28a4-4aa9-a020-bcb2f70b7a1f.png)
 
