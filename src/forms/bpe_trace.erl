@@ -4,8 +4,7 @@
 -include_lib("bpe/include/bpe.hrl").
 -include_lib("nitro/include/nitro.hrl").
 
-doc() -> "This is the actor trace row (step) representation. "
-         "Used to draw trace of the processes".
+doc() -> "This is the actor trace row (step) representation. Used to draw trace of the processes".
 id() -> #hist{task=#sequenceFlow{source="Init"}}.
 new(Name,Hist,_) ->
     Task = case Hist#hist.task of [] -> (id())#hist.task; X -> X end,

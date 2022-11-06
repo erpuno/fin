@@ -7,8 +7,8 @@
 event(init) ->
     nitro:clear(stand),
     Module = bpe_pass,
-    Form = Module:new(Module,Module:id(),[]),
-    HTML = form:new(Form, Module:id(), []),
+    FORM = Module:new(Module,Module:id(),[]),
+    HTML = form:new(FORM, Module:id(), []),
     nitro:insert_bottom(stand, HTML);
 
 event({'Next',_}) ->
@@ -17,5 +17,5 @@ event({'Next',_}) ->
 event({'Close',_}) ->
     nitro:redirect("index.html");
 
-event(Event) ->
-    ?LOG_INFO("Unknown:~p.~n", [Event]).
+event(_) ->
+    ok.
